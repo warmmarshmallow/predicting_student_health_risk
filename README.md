@@ -1,42 +1,21 @@
-# 🩺 Kaggle Playground Series S6E7 – Health Condition Classification
+# Kaggle Playground Series S6E7 - Health Condition Classification
 
-A machine learning project for the **Kaggle Playground Series S6E7** competition focused on predicting an individual's **health condition** using demographic, lifestyle, and physiological features.
+This repository contains my solution for the Kaggle Playground Series S6E7 competition, where the goal is to predict an individual's health condition using demographic, lifestyle, and physiological features.
 
-**Competition:** https://www.kaggle.com/competitions/playground-series-s6e7
+Competition Link: https://www.kaggle.com/competitions/playground-series-s6e7
 
----
+## Results
 
-## 📈 Results
+| Model | Public Leaderboard |
+|-------|-------------------:|
+| Logistic Regression | **0.81102** |
 
-| Metric | Score |
-|---------|------:|
-| Public Leaderboard | **0.81102** |
-
----
-
-## 📖 Project Overview
-
-The goal of this competition is to classify an individual's health condition from a mixture of numerical and categorical features.
-
-This repository demonstrates a complete machine learning workflow, including:
-
-- Exploratory Data Analysis (EDA)
-- Data preprocessing
-- Missing value handling
-- Feature encoding
-- Logistic Regression model training
-- Kaggle submission generation
-
-This project was completed as part of my journey learning applied machine learning and participating in Kaggle competitions.
-
----
-
-## 📂 Repository Structure
+## Project Structure
 
 ```
 .
 ├── visualization.ipynb      # Exploratory Data Analysis
-├── test.ipynb               # Model training & submission
+├── test.ipynb               # Model training and prediction
 ├── train.csv
 ├── test.csv
 ├── sample_submission.csv
@@ -44,95 +23,44 @@ This project was completed as part of my journey learning applied machine learni
 └── README.md
 ```
 
----
+## Exploratory Data Analysis
 
-## 🔍 Exploratory Data Analysis
+Before training the model, I explored the dataset to better understand the relationships between features and the target variable.
 
-The dataset was explored before model training to better understand feature distributions and relationships.
+The analysis includes:
 
-The EDA notebook includes:
+- Distribution of the target classes
+- Correlation heatmap for numerical features
+- Boxplots for numerical variables grouped by health condition
+- Distribution of categorical variables
+- Mutual Information feature importance
 
-### Target Distribution
+The visualizations are available in `visualization.ipynb`.
 
-- Class frequency visualization
-- Class balance inspection
+## Data Preprocessing
 
-### Numerical Features
+The preprocessing pipeline consists of:
 
-Boxplots and distribution plots for numerical variables such as:
+- Filling missing numerical values using the median
+- Filling missing categorical values using the mode
+- One-hot encoding categorical variables
+- Combining train and test datasets before encoding to ensure consistent feature columns
+- Splitting the processed data into training and validation sets
 
-- BMI
-- Heart Rate
-- Sleep Duration
-- Water Intake
-- Exercise Duration
-- Daily Step Count
+## Model
 
-### Correlation Analysis
+The baseline model is implemented using Scikit-Learn's Logistic Regression.
 
-- Correlation heatmap
-- Numerical feature relationships
+Training pipeline:
 
-### Categorical Features
+1. Load and clean the data
+2. Encode categorical features
+3. Split into training and validation sets
+4. Train Logistic Regression
+5. Generate predictions for the test dataset
+6. Export predictions as `submission.csv`
 
-Normalized bar charts for categorical variables including:
-
-- Diet Type
-- Physical Activity Level
-- Sleep Quality
-- Stress Level
-- Smoking Status
-- Alcohol Consumption
-- Gender
-
-### Feature Importance
-
-Mutual Information scores were calculated to estimate the predictive strength of each feature.
-
----
-
-## ⚙️ Data Preprocessing
-
-The preprocessing pipeline performs several data-cleaning steps before training.
-
-### Missing Values
-
-**Numerical features**
-
-- Filled using the median value.
-
-**Categorical features**
-
-- Filled using the most frequent category (mode).
-
-### Feature Encoding
-
-Categorical variables were converted into numerical features using **One-Hot Encoding**.
-
-To ensure the training and testing datasets contain identical encoded columns, both datasets were combined before encoding and separated afterward.
-
----
-
-## 🤖 Model
-
-Current baseline model:
-
-- Logistic Regression (Scikit-Learn)
-
-Training workflow:
-
-1. Load training and testing datasets
-2. Handle missing values
-3. Encode categorical variables
-4. Split training data into training and validation sets
-5. Train Logistic Regression
-6. Evaluate validation performance
-7. Generate predictions on the test set
-8. Export predictions as `submission.csv`
-
----
-
-## 🛠 Technologies Used
+## Technologies Used
 
 - Python
 - Pandas
@@ -141,68 +69,28 @@ Training workflow:
 - Seaborn
 - Scikit-Learn
 
----
+## Future Improvements
 
-## 📊 Machine Learning Pipeline
+Possible improvements include:
 
-```
-Raw Data
-      │
-      ▼
-Missing Value Imputation
-      │
-      ▼
-One-Hot Encoding
-      │
-      ▼
-Train / Validation Split
-      │
-      ▼
-Logistic Regression
-      │
-      ▼
-Prediction
-      │
-      ▼
-submission.csv
-```
-
----
-
-## 🚀 Future Improvements
-
-Future versions of this project may include:
-
-- PyTorch Neural Networks
 - CatBoost
 - XGBoost
 - LightGBM
-- Hyperparameter tuning
+- PyTorch Neural Networks
+- Hyperparameter optimization
 - Feature engineering
 - Cross-validation
-- Ensemble learning
+- Ensemble methods
 
----
+## Lessons Learned
 
-## 📚 What I Learned
-
-This project helped reinforce my understanding of:
+Through this project I gained practical experience with:
 
 - Exploratory Data Analysis (EDA)
-- Data visualization
 - Missing value imputation
-- One-Hot Encoding
+- One-hot encoding
 - Feature preprocessing
-- Mutual Information feature selection
 - Logistic Regression
 - Model evaluation
 - Kaggle competition workflow
-- Building complete machine learning pipelines
-
----
-
-## 🏁 Conclusion
-
-This project served as a practical introduction to solving a real-world tabular classification problem. Starting from raw data, I explored feature relationships, cleaned and encoded the dataset, trained a Logistic Regression baseline model, and generated Kaggle-ready predictions.
-
-My first submission achieved a **Public Leaderboard score of 0.81102**, providing a strong baseline for future experimentation with more advanced machine learning models.
+- Building end-to-end machine learning pipelines
